@@ -1,0 +1,23 @@
+.wrap-item {
+    width: 470px;
+    margin: 10px;
+    padding: 10px 10px 1px;
+    background: #000000;
+    position: relative;
+    height: 260px;
+}
+
+.wrap-item .item {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.wrap-item .item iframe,
+.wrap-item .item h3 {
+    width: 400px;
+    height: 210px;
+}
+
+.wrap-item-wrapper{
+    background-color: #000;
+}
