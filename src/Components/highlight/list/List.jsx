@@ -6,11 +6,32 @@ import New from "../new/New";
 import Wrapper from "../wrapper/Wrapper";
 
 
- function List(props) {
-    return props.list.map(item =>                    
-                 (item.type==='video') ? 
-                    (item.views>1000 ? <Popular><Video {...item} /></Popular>: <New><Video {...item} /></New>)
-                  : (item.views>1000 ? <Popular><Article {...item} /></Popular>: (item.views<100 ? (<New><Article {...item} /></New>):<Wrapper><Article {...item} /></Wrapper>))
-                );}
+function List(props) {
+	const WrappedVideo = Wrapper(Video);
+	const WrappedArticle = Wrapper(Article);
+
+    return props.list.map((item) =>
+      item.type === 'video' ? (
+        item.views > 1000 ? (
+          <Popular>
+            <WrappedVideo {...item} />
+          </Popular>
+        ) : (
+          <New>
+            <WrappedVideo {...item} />
+          </New>
+        )
+      ) : item.views > 1000 ? (
+        <Popular>
+          <WrappedArticle {...item} />
+        </Popular>
+      ) : item.views < 100 ? (
+        <New>
+          <WrappedArticle {...item} />
+        </New>
+      ) : (
+          <WrappedArticle {...item} />
+      )
+    );}
 
 export default List;
